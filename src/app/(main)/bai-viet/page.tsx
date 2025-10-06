@@ -23,10 +23,7 @@ export default async function PostsPage() {
       <div className="container">
         <div className="grid grid-cols-12 gap-4">
           {posts.data.map((post) => (
-            <div
-              key={post.id}
-              className="col-span-12 md:col-span-6 lg:col-span-4"
-            >
+            <div key={post.id} className="col-span-6 lg:col-span-4">
               <div className="group">
                 <Link
                   href={`/bai-viet/${generateNameId({
@@ -51,7 +48,7 @@ export default async function PostsPage() {
                     })}`}
                     className="font-semibold block duration-150 group-hover:text-destructive"
                   >
-                    {post.title}
+                    <span className="line-clamp-2">{post.title}</span>
                   </Link>
                   <p className="text-sm text-muted-foreground line-clamp-2">
                     {getPlainTextFromBlocksContent(post.content)}

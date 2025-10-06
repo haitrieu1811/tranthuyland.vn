@@ -39,10 +39,7 @@ export default async function ProductPage({
         {(products.meta.pagination?.total ?? 0) > 0 && (
           <div className="grid grid-cols-12 gap-4">
             {products.data.map((product) => (
-              <div
-                key={product.id}
-                className="col-span-12 md:col-span-6 lg:col-span-4"
-              >
+              <div key={product.id} className="col-span-6 lg:col-span-4">
                 <ProductItem product={product} />
               </div>
             ))}
