@@ -6,42 +6,29 @@ export const cn = (...inputs: ClassValue[]) => {
   return twMerge(clsx(inputs));
 };
 
-export const formatLargeNumber = (value: number): string => {
-  if (typeof value !== "number" || isNaN(value)) {
-    throw new Error("Giá trị đầu vào phải là một số hợp lệ");
-  }
+export const formatMoneyToWords = (amount: number): string => {
+  if (amount === 0) return "0";
 
-  const absValue = Math.abs(value);
+  const ty = Math.floor(amount / 1_000_000_000);
+  const million = Math.floor((amount % 1_000_000_000) / 1_000_000);
+  const thousand = Math.floor((amount % 1_000_000) / 1_000);
 
-  if (absValue >= 1000000000000) {
-    // Nghìn tỷ
-    const trillionValue = value / 1000000000000;
-    const formatter = new Intl.NumberFormat("vi-VN", {
-      minimumFractionDigits: 0,
-      maximumFractionDigits: 0,
-    });
-    return `${formatter.format(trillionValue)} nghìn tỷ`;
-  } else if (absValue >= 1000000000) {
-    // Tỷ
-    const billionValue = value / 1000000000;
-    const formatter = new Intl.NumberFormat("vi-VN", {
-      minimumFractionDigits: 0,
-      maximumFractionDigits: 0,
-    });
-    return `${formatter.format(billionValue)} tỷ`;
-  } else if (absValue >= 1000000) {
-    // Triệu
-    const millionValue = value / 1000000;
-    const formatter = new Intl.NumberFormat("vi-VN", {
-      minimumFractionDigits: 0,
-      maximumFractionDigits: 0,
-    });
-    return `${formatter.format(millionValue)} triệu`;
+  let result = "";
+
+  if (ty > 0) {
+    result += ty + " tỷ";
+    if (million > 0) result += " " + million + " triệu";
+    else if (thousand > 0) result += " " + thousand + " nghìn";
+  } else if (million > 0) {
+    result += million + " triệu";
+    if (thousand > 0) result += " " + thousand + " nghìn";
+  } else if (thousand > 0) {
+    result += thousand + " nghìn";
   } else {
-    // Dưới triệu - giữ nguyên định dạng
-    const formatter = new Intl.NumberFormat("vi-VN");
-    return formatter.format(value);
+    result = amount.toString();
   }
+
+  return result.trim();
 };
 
 const removeSpecialCharacter = (text: string): string => {

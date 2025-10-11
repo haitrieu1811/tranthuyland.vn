@@ -8,7 +8,7 @@ import GalleryImages from "@/components/gallery-images";
 import ProductItem from "@/components/product-item";
 import apiRequests from "@/lib/apiRequests";
 import {
-  formatLargeNumber,
+  formatMoneyToWords,
   getFullMediaURL,
   getIdFromNameId,
   getPlainTextFromBlocksContent,
@@ -71,7 +71,7 @@ export default async function ProductDetailPage({ params }: Props) {
             )}
             <div className="flex flex-wrap items-center space-x-4">
               <div className="font-semibold text-destructive text-2xl">
-                {formatLargeNumber(Number(product.price))}
+                {formatMoneyToWords(Number(product.price))}
               </div>
               {product.acreage && (
                 <React.Fragment>
@@ -85,7 +85,9 @@ export default async function ProductDetailPage({ params }: Props) {
                 <React.Fragment>
                   <div className="size-1 aspect-square rounded-full bg-black" />
                   <div className="text-xl text-muted-foreground">
-                    {formatLargeNumber(Number(product.price) / product.acreage)}
+                    {formatMoneyToWords(
+                      Number(product.price) / product.acreage
+                    )}
                     /m
                     <sup>2</sup>
                   </div>

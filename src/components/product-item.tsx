@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import {
-  formatLargeNumber,
+  formatMoneyToWords,
   generateNameId,
   getFullMediaURL,
 } from "@/lib/utils";
@@ -38,7 +38,7 @@ export default function ProductItem({ product }: { product: Product }) {
         )}
         <div className="flex items-center space-x-4">
           <div className="font-semibold text-destructive">
-            {formatLargeNumber(Number(product.price))}
+            {formatMoneyToWords(Number(product.price))}
           </div>
           {product.acreage && (
             <div className="text-sm">
