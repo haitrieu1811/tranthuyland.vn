@@ -1,5 +1,8 @@
+/* eslint-disable @next/next/no-img-element */
+
 import type { Metadata } from "next";
 import { Be_Vietnam_Pro } from "next/font/google";
+import Script from "next/script";
 import { Toaster } from "react-hot-toast";
 
 import "./globals.css";
@@ -25,6 +28,32 @@ export default function RootLayout({
           name="google-site-verification"
           content="Zftdnf6wi4wqCkSmEx_M8Z_GH37osudqdJa8efkBpYo"
         />
+        {/* Facebook Pixel base code */}
+        <Script id="facebook-pixel" strategy="afterInteractive">
+          {`
+            !function(f,b,e,v,n,t,s)
+            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+            n.queue=[];t=b.createElement(e);t.async=!0;
+            t.src=v;s=b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t,s)}(window, document,'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+            fbq('init', '2400794723303529');
+            fbq('track', 'PageView');
+          `}
+        </Script>
+
+        {/* NoScript fallback */}
+        <noscript>
+          <img
+            height="1"
+            width="1"
+            style={{ display: "none" }}
+            src="https://www.facebook.com/tr?id=2400794723303529&ev=PageView&noscript=1"
+            alt=""
+          />
+        </noscript>
       </head>
       <body className={`${fontSans.className} antialiased`}>
         <Toaster />
