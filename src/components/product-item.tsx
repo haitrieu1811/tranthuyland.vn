@@ -15,14 +15,15 @@ export default function ProductItem({ product }: { product: Product }) {
   })}`;
   return (
     <div className="group rounded-lg overflow-hidden">
-      <Link href={href}>
+      <Link href={href} className="overflow-hidden block relative">
         <Image
           width={product.thumbnail.width}
           height={product.thumbnail.height}
           src={getFullMediaURL(product.thumbnail.url)}
           alt={product.name}
-          className="w-full aspect-video object-cover"
+          className="w-full aspect-video object-cover group-hover:scale-120 duration-500"
         />
+        <div className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 bg-destructive/20 rounded-lg duration-200 size-10 group-hover:size-full opacity-0 group-hover:opacity-100" />
       </Link>
       <div className="space-y-2 p-4 bg-muted">
         <Link

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
@@ -13,15 +14,18 @@ export default function HomeLocation({
   return (
     <Link
       href={url}
-      style={{
-        backgroundImage: `url(${image})`,
-      }}
-      className="block w-full h-[200px] rounded-md overflow-hidden bg-cover bg-center relative"
+      className="block rounded-lg overflow-hidden relative group"
     >
-      <div className="absolute inset-0 p-6 pb-24 hover:cursor-pointer before:absolute before:inset-0 before:bg-black/20 hover:before:bg-destructive/40 before:duration-150">
-        <div className="relative z-10">
-          <div className="font-semibold text-xl text-white">{title}</div>
-        </div>
+      <div className="absolute inset-0 bg-destructive/30 z-10 -translate-y-full group-hover:translate-y-0 duration-500" />
+      <Image
+        width={500}
+        height={500}
+        src={image}
+        alt={title}
+        className="w-full h-[240px] object-cover group-hover:scale-150 duration-500"
+      />
+      <div className="absolute inset-0 z-[11] p-6">
+        <h3 className="text-xl font-semibold text-white">{title}</h3>
       </div>
     </Link>
   );

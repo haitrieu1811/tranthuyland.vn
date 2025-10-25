@@ -160,14 +160,16 @@ export default async function HomePage() {
                     name: posts.data[0]?.title,
                     id: posts.data[0]?.documentId,
                   })}`}
+                  className="overflow-hidden block relative"
                 >
                   <Image
                     src={getFullMediaURL(posts.data[0]?.thumbnail.url)}
                     alt={posts.data[0]?.title}
                     width={300}
                     height={200}
-                    className="object-cover w-full aspect-video rounded-t-lg"
+                    className="object-cover w-full aspect-video rounded-t-lg group-hover:scale-150 duration-500"
                   />
+                  <div className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 bg-destructive/20 rounded-lg duration-200 size-10 group-hover:size-full opacity-0 group-hover:opacity-100" />
                 </Link>
                 <div className="p-4 rounded-b-lg bg-muted space-y-2">
                   <Link
@@ -194,15 +196,16 @@ export default async function HomePage() {
                       name: post.title,
                       id: post.documentId,
                     })}`}
-                    className="basis-1/3"
+                    className="basis-1/3 block relative overflow-hidden"
                   >
                     <Image
                       src={getFullMediaURL(post.thumbnail.url)}
                       alt={post.title}
                       width={post.thumbnail.width}
                       height={post.thumbnail.height}
-                      className="object-cover w-full aspect-video rounded-t-lg lg:rounded-l-lg lg:rounded-t-none"
+                      className="object-cover w-full aspect-video rounded-t-lg lg:rounded-l-lg lg:rounded-t-none group-hover:scale-120 duration-500"
                     />
+                    <div className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 bg-destructive/20 rounded-lg duration-200 size-10 group-hover:size-full opacity-0 group-hover:opacity-100" />
                   </Link>
                   <div className="flex-1 bg-muted p-4 rounded-b-lg lg:rounded-r-lg">
                     <Link
