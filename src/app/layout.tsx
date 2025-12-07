@@ -1,15 +1,12 @@
 /* eslint-disable @next/next/no-img-element */
-
 import type { Metadata } from "next";
-import { Be_Vietnam_Pro } from "next/font/google";
+import { Mona_Sans as Font_Sans } from "next/font/google";
 import Script from "next/script";
 import { Toaster } from "react-hot-toast";
 
 import "./globals.css";
 
-const fontSans = Be_Vietnam_Pro({
-  weight: ["200", "300", "400", "500", "600", "700", "800", "900"],
-});
+const fontSans = Font_Sans({});
 
 export const metadata: Metadata = {
   title: "Create Next App",

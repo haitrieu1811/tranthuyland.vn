@@ -1,12 +1,12 @@
 "use client";
 
+import { Fancybox } from "@fancyapps/ui";
 import useEmblaCarousel from "embla-carousel-react";
 import Image from "next/image";
 import React, { useCallback, useEffect, useState } from "react";
 
-import { getFullMediaURL } from "@/lib/utils";
 import useFancybox from "@/hooks/useFancybox";
-import { Fancybox } from "@fancyapps/ui";
+import { getFullMediaURL } from "@/lib/utils";
 
 interface ProductCarouselProps {
   images: string[];

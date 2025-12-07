@@ -2,14 +2,18 @@ import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
-import { Hero } from "@/components/hero";
+import HomeCarousel from "@/components/home-carousel";
 import HomeLocation from "@/components/home-location";
 import ProductItem from "@/components/product-item";
 import Search from "@/components/search";
 import { Button } from "@/components/ui/button";
 import apiRequests from "@/lib/apiRequests";
-import { getFullMediaURL, getPlainTextFromBlocksContent } from "@/lib/utils";
-import { cn, generateNameId } from "@/lib/utils";
+import {
+  cn,
+  generateNameId,
+  getFullMediaURL,
+  getPlainTextFromBlocksContent,
+} from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "Trang chủ | Trần Thủy Land",
@@ -32,10 +36,7 @@ export default async function HomePage() {
 
   return (
     <div>
-      <Hero
-        image={getFullMediaURL(homePage.hero.image.url)}
-        slogans={homePage.hero.slogans}
-      />
+      <HomeCarousel />
       <div className="container space-y-20 mt-4">
         {/* Tìm kiếm */}
         <Search cities={cities.data} />
